@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  title: "MPS Flask REST API"
+  description: "Atividade de MPS"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+components:
+  schemas:
+    User:
+      type: "object"
+      required:
+        - user_id
+      properties:
+        user_id:
+          type: "string"
+        name:
+          type: "string"
+        email:
+          type: "string"
+        password:
+          type: "string"
+        status:
+          type: "integer"
+    Event:
+      type: "object"
+      required:
+        - event_id
+      properties:
+        event_id:
+          type: "string"
+        title:
+          type: "string"
+        datetime:
+          type: "string"
+        description:
+          type: "string"
+        status:
+          type: "integer"
+        user_id:
+          type: "string"
+
+  parameters:
+    user_id:
+      name: "user_id"
+      description: "ID of the person to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+    event_id:
+      name: "event_id"
+      description: "ID of the event to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+
+paths:
+  /users:
+    get:
+      operationId: "src.api.routes.user.fetch_all"
+      tags:
+        - "User"
+      summary: "Read the list of users"
+      responses:
+        "200":
+          description: "Sucessfully read user list"
+    post:
+      operationId: "src.api.routes.user.create"
+      tags:
+        - "User"
+      summary: "Create a new user"
+      requestBody:
+        description: "User to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "user"
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: "Sucessfully created user"
+
+  /users/login:
+    post:
+      operationId: "src.api.routes.user.login"
+      tags:
+        - "User"
+      summary: "Make login"
+      requestBody:
+        description: "Info to login"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "user"
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: "Sucessfully authentication"
+
+  /users/{user_id}/logout:
+    post:
+      operationId: "src.api.routes.user.logout"
+      tags:
+        - "User"
+      summary: "Make logout"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "201":
+          description: "Sucessfully logout"
+
+  /users/{user_id}:
+    get:
+      operationId: "src.api.routes.user.find_by_id"
+      tags:
+        - "User"
+      summary: "Read one user"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "200":
+          description: "Successfully read user"
+    patch:
+      tags:
+        - "User"
+      operationId: "src.api.routes.user.update"
+      summary: "Update a user"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "200":
+          description: "Successfully updated user"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "user"
+              $ref: "#/components/schemas/User"
+    delete:
+      tags:
+        - "User"
+      operationId: "src.api.routes.user.delete"
+      summary: "Delete a user"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "204":
+          description: "Successfully deleted user"
+
+  /users/{user_id}/events:
+    get:
+      operationId: "src.api.routes.event.fetch_all"
+      tags:
+        - "Event"
+      summary: "Read the list of events"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "200":
+          description: "Sucessfully read event list"
+    post:
+      operationId: "src.api.routes.event.create"
+      tags:
+        - "Event"
+      summary: "Create a new event"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      requestBody:
+        description: "Event to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "event"
+              $ref: "#/components/schemas/Event"
+      responses:
+        "201":
+          description: "Sucessfully created event"
+
+  /users/{user_id}/events/{event_id}:
+    delete:
+      operationId: "src.api.routes.event.delete"
+      tags:
+        - "Event"
+      summary: "Delete an event"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+        - $ref: "#/components/parameters/event_id"
+      responses:
+        "200":
+          description: "Sucessfully deleted event"
+    patch:
+      operationId: "src.api.routes.event.update"
+      tags:
+        - "Event"
+      summary: "Update an event"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+        - $ref: "#/components/parameters/event_id"
+      requestBody:
+        description: "Event to update"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "event"
+              $ref: "#/components/schemas/Event"
+      responses:
+        "201":
+          description: "Sucessfully created event"
