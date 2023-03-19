@@ -1,2 +1,4 @@
 Flask
 connexion[swagger-ui]
+pypika
+mysql-connector-python
