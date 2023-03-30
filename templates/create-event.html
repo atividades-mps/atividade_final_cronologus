@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronologus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global-styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='create-event.css') }}" />
+</head>
+
+<body>
+    <div class="root">
+        <header class="header">
+            <button class="button menu drop">
+                <img src="{{ url_for('static', filename='/assets/menu.svg') }}" />
+            </button>
+            <h1 class="title">Criar novo evento</h1>
+            <button class="button primary back">
+                Voltar
+            </button>
+        </header>
+        <form class="form">
+            <label class="error">{{error}}</label>
+            <div class="input-group">
+                <label>Título</label>
+                <input name="title" type="text" placeholder="Digite o título" />
+            </div>
+            <div class="input-group">
+                <label>Descrição</label>
+                <input name="description" type="text" placeholder="Digite a descrição" />
+            </div>
+            <div class="input-group">
+                <label>Data</label>
+                <input name="datetime" type="date" />
+            </div>
+            <button class="button secondary submit" type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <div class="drop-menu hide">
+        <button class="button primary close">
+            Fechar
+        </button>
+
+        <ul class="options">
+            <li class="option logout">
+                SAIR
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/create-event.js') }}"></script>
+</body>
+
+</html>

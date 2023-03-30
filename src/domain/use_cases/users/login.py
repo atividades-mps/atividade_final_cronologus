@@ -10,5 +10,5 @@ class Login:
         user = self.user_service.find_by_name_and_password(name, password)
         if user != None:
             self.user_service.update(user.id, status=1)
-            return True
+            return user.id
         return False

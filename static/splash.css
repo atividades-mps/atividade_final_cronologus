@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.author {
+  padding: 16px;
+  margin-top: auto;
+}
+
+.title {
+  margin: 0;
+}
+
+.title,
+.author {
+  font-weight: normal;
+}

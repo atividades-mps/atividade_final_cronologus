@@ -77,7 +77,7 @@ class MySQLEventsService(EventsService):
         cursor = self.db.cursor()
         query = """
             DELETE FROM agenda_eventos 
-            WHERE eventos_id = %s AND usuario_id = %s
+            WHERE evento_id = %s AND usuario_id = %s
         """
         cursor.execute(
             query, 

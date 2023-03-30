@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  padding: 32px;
+  align-self: flex-start;
+  font-weight: normal;
+}
+
+.login {
+  padding: 16px;
+  padding-bottom: 40px;
+  font-size: 14px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  align-items: center;
+}
+
+.form .error {
+  text-align: center;
+}
+
+.form .button {
+  margin-top: 16px;
+  align-self: center;
+}
