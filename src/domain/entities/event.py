@@ -4,7 +4,7 @@ from src.domain.entities.as_dict import EntityAsDict
 
 
 class Event(EntityAsDict):
-    def __init__(self, id: str, title: str, datetime: datetime, description: str, status: int, user_id: int):
+    def __init__(self, id: str, title: str, datetime: datetime, description: str, status: int, user_id: str):
         self.id = id 
         self.title = title 
         self.datetime = datetime 

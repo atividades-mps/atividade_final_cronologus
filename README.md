@@ -223,7 +223,7 @@
 
 ---
 
-## **Visualizar eventos por dia**
+<!-- ## **Visualizar eventos por dia**
 
 `GET /users/:id/events?day=[date]`
 
@@ -276,4 +276,4 @@
   }
   ...
 ]
-```
+``` -->

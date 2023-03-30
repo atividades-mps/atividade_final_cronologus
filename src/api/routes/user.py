@@ -1,4 +1,4 @@
-from src.api.services.mock_users_service import MockUsersService
+from src.api.services.mysql_users_service import MySQLUsersService
 from src.domain.use_cases.users.create import Create
 from src.domain.use_cases.users.delete_by_id import DeleteById
 from src.domain.use_cases.users.fetch_all import FetchAll
@@ -7,7 +7,7 @@ from src.domain.use_cases.users.login import Login
 from src.domain.use_cases.users.logout import Logout
 from src.domain.use_cases.users.update import Update
 
-user_service = MockUsersService()
+user_service = MySQLUsersService()
 
 def create(user):
     create_UC = Create(user_service)

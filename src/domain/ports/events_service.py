@@ -8,17 +8,6 @@ class EventsService:
         pass
     def fetch_all(self, user_id: str)-> list[Event]:
         pass
-    def fetch_by_day(
-            self, 
-            user_id: str, 
-            datetime: datetime) -> list[Event]:
-        pass
-    def fetch_by_range_date(
-            self, 
-            user_id: str, 
-            start_date: datetime, 
-            end_date: datetime) -> list[Event]:
-        pass
     def update(
             self, 
             user_id: str, 

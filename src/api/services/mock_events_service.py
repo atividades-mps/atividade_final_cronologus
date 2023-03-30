@@ -20,32 +20,6 @@ class MockEventsService(EventsService):
         if not(user_id in self.data):
             self.data[user_id] = []
         return self.data[user_id]
-
-    def fetch_by_day(
-            self, 
-            user_id: str, 
-            datetime: datetime) -> list[Event]:
-        if not(user_id in self.data):
-            self.data[user_id] = []
-        filtered_list = list(
-            filter(lambda event: event.datetime.date() == datetime.date(), self.data[user_id])
-        )
-        return filtered_list
-        
-    def fetch_by_range_date(
-            self, 
-            user_id: str, 
-            start_date: datetime, 
-            end_date: datetime) -> list[Event]:
-        if not(user_id in self.data):
-            self.data[user_id] = []
-        filtered_list = list(
-            filter(
-                lambda event: start_date.date() <= event.datetime.date() <= end_date.date(), 
-                self.data[user_id]
-            )
-        )
-        return filtered_list
         
     def update(
             self, 

@@ -1,10 +1,10 @@
-from src.api.services.mock_events_service import MockEventsService
+from src.api.services.mysql_events_service import MySQLEventsService
 from src.domain.use_cases.events.create import Create
 from src.domain.use_cases.events.delete_by_id import DeleteById
 from src.domain.use_cases.events.fetch_all import FetchAll
 from src.domain.use_cases.events.update import Update
 
-event_service = MockEventsService()
+event_service = MySQLEventsService()
 
 def fetch_all(user_id):
     fetch_all_UC = FetchAll(event_service)
